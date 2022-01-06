@@ -26,8 +26,7 @@ module.exports = {
     navbar: {
       logo: {
         alt: 'PlugZapi Logo',
-        src:
-          'https://www.plugzapi.com.br/wp-content/themes/plugzapi/dist/images/logo.svg',
+        src: '/img/Admin.jpg',
       },
       items: [],
     },
