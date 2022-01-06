@@ -26,7 +26,7 @@ module.exports = {
     navbar: {
       logo: {
         alt: 'PlugZapi Logo',
-        src: '/img/Admin.jpg',
+        src: '/img/Aplicaçaçao_Branca.png',
       },
       items: [],
     },
