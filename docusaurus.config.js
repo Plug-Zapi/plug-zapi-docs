@@ -114,7 +114,7 @@ module.exports = {
           routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
-          editUrl: 'https://github.com/PlugZapi/plugzapi-docs/tree/main',
+          editUrl: 'https://github.com/Plug-Zapi/plug-zapi-docs/tree/main',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
