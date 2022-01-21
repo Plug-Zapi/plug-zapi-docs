@@ -26,7 +26,8 @@ module.exports = {
     navbar: {
       logo: {
         alt: 'PlugZapi Logo',
-        src: '/img/Aplicaçaçao_Branca.png',
+        src:
+          'https://raw.githubusercontent.com/Plug-Zapi/plug-zapi-docs/master/img/Aplica%C3%A7a%C3%A7ao_Branca.png',
       },
       items: [],
     },
