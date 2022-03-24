@@ -8,7 +8,7 @@ title: Metadata do Grupo por Convite
 
 #### /group-invitation-metadata
 
-`GET` https://api.plugzapi.com.br/instances/SUA_INSTANCIA/token/SEU_TOKEN/group-invitation-metadata?url={**URL** **DO** **CONVITE**}
+`GET` https://api.plugzapi.com.br/instances/SUA_INSTANCIA/token/SEU_TOKEN/group-invitation-metadata?url={**URL****DO****CONVITE**}
 
 ## Conceituação
 
