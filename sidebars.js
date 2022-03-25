@@ -13,7 +13,7 @@ module.exports = {
       'gettingstarted/introduction',
       'gettingstarted/authentication',
     ],
-    /*
+    
     Dicas: [
       'tips/blockednumber',
       'tips/enable-fix-number',
@@ -22,7 +22,7 @@ module.exports = {
       'tips/stability',
       'tips/emulators',
     ],
-*/
+
     Instância: [
       'instance/introduction',
       'instance/qrcode',
