@@ -28,6 +28,7 @@ module.exports = {
         alt: 'PlugZapi Logo',
         src:
           'https://raw.githubusercontent.com/Plug-Zapi/plug-zapi-docs/master/img/Aplica%C3%A7a%C3%A7ao_Branca.png',
+    
       },
       items: [],
     },
