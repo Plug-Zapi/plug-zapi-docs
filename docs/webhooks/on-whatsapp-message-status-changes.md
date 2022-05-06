@@ -67,11 +67,44 @@ Para atualizar a rota do webhook é possível fazer isso pela API ou pelo painel
 
 ```json
 {
-  "status": "MESSAGE_RECEIVED",
+  "status": "SENT",
   "ids": ["999999999999999999999"],
   "momment": 1632234645000,
   "phone": "5544999999999",
-  "type": "MessageStatusCallback"
+  "type": "MessageStatusCallback",
+  "instanceId": "instance.id"
+}
+{
+  "status": "RECEIVED",
+  "ids": ["999999999999999999999"],
+  "momment": 1632234645000,
+  "phone": "5544999999999",
+  "type": "MessageStatusCallback",
+  "instanceId": "instance.id"
+}
+{
+  "status": "READ",
+  "ids": ["999999999999999999999"],
+  "momment": 1632234645000,
+  "phone": "5544999999999",
+  "type": "MessageStatusCallback",
+  "instanceId": "instance.id"
+}
+{
+  "status": "READ-SELF",
+  "ids": ["999999999999999999999"],
+  "momment": 1632234645000,
+  "phone": "5544999999999",
+  "type": "MessageStatusCallback",
+  "instanceId": "instance.id"
+}
+{
+  "status": "PLAYED",
+  "ids": ["999999999999999999999"],
+  "momment": 1632234645000,
+  "phone": "5544999999999",
+  "type": "MessageStatusCallback",
+  "instanceId": "instance.id"
 }
 ```
 
