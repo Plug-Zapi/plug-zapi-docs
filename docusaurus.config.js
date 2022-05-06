@@ -19,7 +19,7 @@ module.exports = {
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'https://www.plugzapi.com.br/wp-content/themes/plugzapi/favicon.png',
+  favicon: 'https://raw.githubusercontent.com/Plug-Zapi/plug-zapi-docs/master/img/Favicon%202.png',
   organizationName: 'PlugZapi',
   projectName: 'plugzapi-docs',
   themeConfig: {
