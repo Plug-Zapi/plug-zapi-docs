@@ -1,6 +1,6 @@
 {
     "method": "POST",
-    "url": "https://api.plugzapi.io/instances/SUA_INSTANCIA/token/SEU_TOKEN/modify-chat",
+    "url": "https://api.plugzapi.com.br/instances/SUA_INSTANCIA/token/SEU_TOKEN/send-gif",
     "httpVersion": "HTTP/1.1",
     "queryString": [],
     "headers": [
@@ -12,6 +12,6 @@
     "cookies": [],
     "postData": {
         "mimeType": "application/json",
-        "text": "{\"phone\": \"5544999999999\", \"action\": \"delete\"}"
+        "text": "{\"phone\": \"5511999998888\", \"gif\": \"https://file-examples.com/storage/fe88505b6162b2538a045ce/2017/04/file_example_MP4_480_1_5MG.mp4\"}"
     }
 }

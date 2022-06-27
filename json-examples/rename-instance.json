@@ -1,17 +1,21 @@
 {
-    "method": "POST",
-    "url": "https://api.plugzapi.io/instances/SUA_INSTANCIA/token/SEU_TOKEN/modify-chat",
+    "method": "PUT",
+    "url": "https://api.plugzapi.com.br/instances",
     "httpVersion": "HTTP/1.1",
     "queryString": [],
     "headers": [
         {
             "name": "Content-Type",
             "value": "application/json"
+        },
+        {   
+            "name": "Authorization",
+            "value": "Bearer SEU-TOKEN-AQUI"
         }
     ],
     "cookies": [],
     "postData": {
         "mimeType": "application/json",
-        "text": "{\"phone\": \"5544999999999\", \"action\": \"delete\"}"
+        "text": "{\"value\": \"Name\"}"
     }
 }

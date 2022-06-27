@@ -25,16 +25,24 @@ module.exports = {
 
     Instância: [
       'instance/introduction',
+      'instance/update-auto-read-message',
+      'instance/profile-picture',
+      'instance/update-call-reject-auto',
+      'instance/update-call-reject-message',
       'instance/qrcode',
       'instance/restore-session',
       'instance/restart',
       'instance/disconnect',
       'instance/status',
       'instance/device',
+      'instance/rename-instance',
     ],
     Mensagens: [
       'message/introduction',
       'message/send-message-text',
+      'message/forward-message',
+      'message/send-message-reaction',
+      'message/send-remove-reaction',
       'message/send-message-image',
       'message/send-message-sticker',
       'message/send-message-audio',
@@ -45,6 +53,7 @@ module.exports = {
       /* 'send-message/send-message-product',
       'send-message/send-message-catalog',*/
       'message/send-message-contact',
+      'message/send-button-actions',
       'message/send-button-list',
       'message/send-option-list',
       'message/delete-message',
@@ -99,6 +108,9 @@ module.exports = {
       'business/get-products',
       'business/get-products-phone',
       'business/get-product-id',
+      'business/tags',
+      'business/tags-add',
+      'business/tags-remove',
       'business/delete-product',
     ],
     Webhooks: [
