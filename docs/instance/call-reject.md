@@ -19,7 +19,7 @@ Esse método ativa a opção de Rejeitar chamadas automático na sua API, com el
 
 ```json
 {
-"value": true ou false
+  "value": true ou false
 }
 ```
 
