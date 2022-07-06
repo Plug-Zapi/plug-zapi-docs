@@ -9,7 +9,7 @@ title: Enviar documentos
 
 `POST` https://api.plugzapi.com.br/instances/SUA_INSTANCIA/token/SEU_TOKEN/send-document/ **{extension}**
 
-> **Não se esqueça!** Você precisa informar o parâmetro **{extension}** com a extensão do aquivo que deseja enviar ! Teóricamente este método deve suportar todos tipos de documentos, desde que eles estejam dentro das politícas de tamanho de aquivos do proprio Whatsaspp (para saber mais sobre estes limites [clique aqui]).
+> **Não se esqueça!** Você precisa informar o parâmetro **{extension}** (O parâmetro deve ser informado de forma "simples" somente a extensão do arquivo, exemplo: **send-document/PDF**) com a extensão do aquivo que deseja enviar ! Teóricamente este método deve suportar todos tipos de documentos, desde que eles estejam dentro das politícas de tamanho de aquivos do proprio Whatsaspp (para saber mais sobre estes limites [clique aqui]).
 
 [clique aqui]: https://developers.facebook.com/docs/whatsapp/api/media/#post-processing
 
