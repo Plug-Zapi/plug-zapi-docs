@@ -1,5 +1,5 @@
 ---
-id: Z-APIvsAPI-OFICIAL
+id: PlugZapivsAPI-OFICIAL
 title: PlugZapi vs API Oficial
 ---
 

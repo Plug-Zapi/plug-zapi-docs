@@ -1,15 +1,11 @@
 ---
-id: on-message-received
-title: Ao receber
+id: on-message-received-notify-fromme
+title: Ao receber (enviadas por mim)
 ---
-
-## Método
-
-#### `POST` on-message-received
 
 ## Conceituação
 
-Esse é o webhook de retorno de mensagens recebidas
+Esse é o webhook de retorno de mensagens recebidas e enviadas por mim (atualiza o webhook com a caixa de enviadas por mim já ativada)
 
 :::caution Atenção
 
@@ -25,13 +21,11 @@ Para atualizar a rota do webhook é possível fazer isso pela API ou pelo painel
 
 ### API
 
-#### /update-webhook-received
+#### /update-webhook-received-delivery
 
-`PUT` https://api.plugzapi.com.br/instances/SUA_INSTANCIA/token/SEU_TOKEN/update-webhook-received
+`PUT` https://api.plugzapi.com.br/instances/SUA_INSTANCIA/token/SEU_TOKEN/update-webhook-received-delivery
 
 #### Request Body
-
-#### Body
 
 ```json
 {
@@ -41,54 +35,52 @@ Para atualizar a rota do webhook é possível fazer isso pela API ou pelo painel
 
 ---
 
-### Painel Administrativo
+## Retornos dos webhooks
 
-![img](../../img/received.png)
+Os possíveis retornos do webhook **on-message-received-delivery** estão cadastrado logo abaixo:
 
----
+## Response
 
-## Atributos
-
-### Obrigatórios
-
-| Atributos | Tipo | Descrição |
-| :-- | :-: | :-- |
-| phone | string | Número de telefone, ou do grupo que enviou a mensagem. |
+| Atributos      | Tipo   | Descrição |
+| :------------  | :----: |  :-- |
+| waitingMessage | boolean| Identifica se a sua mensagem está com status de "Aguardando a mensagem" |
+| phone          | string | Número de telefone, ou do grupo que enviou a mensagem. |
 | participantPhone | string | Número de telefone do membro do grupo que enviou a mensagem. |
-| messageId | string | Idetificador da mensagem na conversa. |
-| status | string | Status que a mensagem se encontra no momento do envio (PENDING, SENT, RECEIVED, READ ou PLAYED). |
+| messageId      | string | Idetificador da mensagem na conversa. |
+| status         | string | Status que a mensagem se encontra no momento do envio (PENDING, SENT, RECEIVED, READ ou PLAYED). |
 | referenceMessageId | string | Referência a mensagem que foi respondida para o caso da mensagem recebida ser uma resposta a uma mensagem da conversa. |
-| momment | integer | Momento em que a mensagem foi recebida ou do erro. |
-| type | string | Tipo do evento da instância, nesse caso será "ReceivedCallBack". |
-| photo | string | Url da foto do usuário que enviou a mensagem. |
-| text.message | string | Texto da mensagem. |
-| image.caption | string | Leganda da foto. |
+| momment        | integer | Momento em que a mensagem foi recebida ou do erro. |
+| type           | string | Tipo do evento da instância, nesse caso será "ReceivedCallBack". |
+| photo          | string | Url da foto do usuário que enviou a mensagem. |
+| text.message   | string | Texto da mensagem. |
+| image.caption  | string | Leganda da foto. |
 | image.imageUrl | string | Url da foto. |
 | image.thumbnailUrl | string | Url da thumbnail da foto. |
 | image.mimeType | string | MimeType da imagem. |
+| isGroup        | boolean | Indica se o chat é um grupo|
 | audio.mimeType | string | MimeType do áudio. |
 | audio.audioUrl | string | Url do áudio. |
-| video.caption | string | Legenda do vídeo. |
+| video.caption  | string | Legenda do vídeo. |
 | video.videoUrl | string | Url do vídeo. |
 | video.mimeType | string | MimeType do vídeo. |
 | contact.displayName | string | Nome do contato. |
-| contact.vCard | string | VCard contendo as informações do contato. |
+| contact.vCard     | string | VCard contendo as informações do contato. |
 | document.mimeType | string | MimeType do documento. |
 | document.fileName | string | Nome do documento. |
-| document.title | string | Título do documento. |
-| document.pageCount | string | Número de páginas do documento. |
+| document.title        | string | Título do documento. |
+| document.pageCount    | string | Número de páginas do documento. |
 | document.thumbnailUrl | string | Url da thumbnail do documento. |
-| document.documentUrl | string | Url do documento. |
+| document.documentUrl  | string | Url do documento. |
 | location.thumbnailUrl | string | Url da thumbnail da localização. |
-| location.longitude | float | Longitude da localização. |
-| location.latitude | float | Latitude da localização. |
-| location.url | string | Url da localização. |
-| location.name | string | Nome da localização. |
-| location.address | string | Endereço da localização. |
-| sticker.mimeType | string | MimeType do sticker. |
-| sticker.stickerUrl | string | Url do sticker. |
+| location.longitude    | float | Longitude da localização. |
+| location.latitude     | float | Latitude da localização. |
+| location.url          | string | Url da localização. |
+| location.name         | string | Nome da localização. |
+| location.address      | string | Endereço da localização. |
+| sticker.mimeType      | string | MimeType do sticker. |
+| sticker.stickerUrl    | string | Url do sticker.  |
 
-## Response
+---
 
 ### 200
 
@@ -96,6 +88,8 @@ Para atualizar a rota do webhook é possível fazer isso pela API ou pelo painel
 
 ```json
 {
+  "waitingMessage": false,
+  "isGroup": false,
   "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
   "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
   "phone": "5544999999999",
@@ -111,7 +105,41 @@ Para atualizar a rota do webhook é possível fazer isso pela API ou pelo painel
   "type": "ReceivedCallback",
   "text": {
     "message": "teste"
-  }
+  },
+  "instanceId": "instance.id"
+}
+```
+
+### Exemplo de retorno de reação
+
+```json
+{
+  "waitingMessage": false,
+  "isGroup": false,
+  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "phone": "5544999999999",
+  "fromMe": false,
+  "momment": 1632228955000,
+  "status": "RECEIVED",
+  "chatName": "name",
+  "senderPhoto": "https://",
+  "senderName": "name",
+  "participantPhone": null,
+  "photo": "https://",
+  "broadcast": false,
+  "type": "ReceivedCallback",
+  "reaction": {
+    "value": "❤️",
+    "time": 1651878681150,
+    "referencedMessage": {
+      "messageId": "3EB0796DC6B777C0C7CD",
+      "fromMe": true,
+      "phone": "5544999999999",
+      "participant": null
+    }
+  },
+  "instanceId": "instance.id"
 }
 ```
 
@@ -119,6 +147,8 @@ Para atualizar a rota do webhook é possível fazer isso pela API ou pelo painel
 
 ```json
 {
+  "waitingMessage": false,
+  "isGroup": false,
   "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
   "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
   "phone": "5544999999999",
@@ -137,7 +167,8 @@ Para atualizar a rota do webhook é possível fazer isso pela API ou pelo painel
   "buttonsResponseMessage": {
     "buttonId": "1",
     "message": "Ótimo"
-  }
+  },
+  "instanceId": "instance.id"
 }
 ```
 
@@ -145,6 +176,8 @@ Para atualizar a rota do webhook é possível fazer isso pela API ou pelo painel
 
 ```json
 {
+  "waitingMessage": false,
+  "isGroup": false,
   "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
   "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
   "phone": "5544999999999",
@@ -161,51 +194,11 @@ Para atualizar a rota do webhook é possível fazer isso pela API ou pelo painel
   "forwarded": false,
   "type": "ReceivedCallback",
   "listResponseMessage": {
-    "message": "PlugZapi Mais software, menos esforço",
-    "title": "PlugZapi",
+    "message": "Texto da mensagem",
+    "title": "titulo da lista ",
     "selectedRowId": "1"
-  }
-}
-```
-### Exemplo de retorno de texto vindos de anúncio
-
-```json
-{
-    "waitingMessage": false,
-    "isGroup": false,
-    "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
-    "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
-    "phone": "5544999999999",
-    "fromMe": false,
-    "momment": NumberLong(1657209752000),
-    "status": "RECEIVED",
-    "chatName": "name",
-    "senderPhoto": null,
-    "senderName": "name",
-    "photo": null,
-    "broadcast": false,
-    "externalAdReply": {
-        "title": "Titulo",
-        "body": "texto do anuncio",
-        "mediaType": NumberInt(1),
-        "thumbnailUrl": "https://",
-        "sourceType": "ad",
-        "sourceId": "23722824350495506",
-        "sourceUrl": "https://",
-        "containsAutoReply": false,
-        "renderLargerThumbnail": true,
-        "showAdAttribution": true
-    },
-    "messageExpirationSeconds": NumberInt(0),
-    "forwarded": false,
-    "type": "ReceivedCallback",
-    "text": {
-        "message": "mensagem recebida",
-        "description": "texto do anuncio",
-        "title": "titulo",
-        "url": "https://",
-        "thumbnailUrl": "https://"
-    }
+  },
+  "instanceId": "instance.id"
 }
 ```
 
@@ -213,6 +206,8 @@ Para atualizar a rota do webhook é possível fazer isso pela API ou pelo painel
 
 ```json
 {
+  "waitingMessage": false,
+  "isGroup": false,
   "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
   "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
   "phone": "5544999999999",
@@ -231,7 +226,8 @@ Para atualizar a rota do webhook é possível fazer isso pela API ou pelo painel
     "imageUrl": "https://",
     "thumbnailUrl": "https://",
     "caption": ""
-  }
+  },
+  "instanceId": "instance.id"
 }
 ```
 
@@ -239,6 +235,8 @@ Para atualizar a rota do webhook é possível fazer isso pela API ou pelo painel
 
 ```json
 {
+  "waitingMessage": false,
+  "isGroup": false,
   "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
   "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
   "phone": "5544999999999",
@@ -255,138 +253,13 @@ Para atualizar a rota do webhook é possível fazer isso pela API ou pelo painel
   "audio": {
     "audioUrl": "https://",
     "mimeType": "audio/ogg; codecs=opus"
-  }
+  },
+  "instanceId": "instance.id"
 }
 ```
 
 ### Exemplo de retorno de vídeo
 
-```json
-{
-  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
-  "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
-  "phone": "5544999999999",
-  "fromMe": false,
-  "momment": 1632228889000,
-  "status": "RECEIVED",
-  "chatName": "name",
-  "senderPhoto": "https://",
-  "senderName": "name",
-  "participantPhone": null,
-  "photo": "https://",
-  "broadcast": false,
-  "type": "ReceivedCallback",
-  "video": {
-    "videoUrl": "https://",
-    "mimeType": "video/mp4",
-    "caption": ""
-  }
-}
-```
-
-### Exemplo de retorno de contato
-
-```json
-{
-  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
-  "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
-  "phone": "5544999999999",
-  "fromMe": false,
-  "momment": 1632228925000,
-  "status": "RECEIVED",
-  "chatName": "name",
-  "senderPhoto": "https://",
-  "senderName": "name",
-  "participantPhone": null,
-  "photo": "https://",
-  "broadcast": false,
-  "type": "ReceivedCallback",
-  "contact": {
-    "displayName": "Cesar Baleco",
-    "vCard": "BEGIN:VCARD\nVERSION:3.0\nN:;nome;;;\nFN:nome\nTEL;type=CELL;type=VOICE;waid=5544999999999:+55 44 9999-9999\nEND:VCARD",
-    "phones": ["5544999999999"]
-  }
-}
-```
-
-### Exemplo de retorno de documento
-
-```json
-{
-  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
-  "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
-  "phone": "5544999999999",
-  "fromMe": false,
-  "momment": 1632228955000,
-  "status": "RECEIVED",
-  "chatName": "name",
-  "senderPhoto": "https://",
-  "senderName": "name",
-  "participantPhone": null,
-  "photo": "https://",
-  "broadcast": false,
-  "type": "ReceivedCallback",
-  "document": {
-    "documentUrl": "https://",
-    "mimeType": "application/pdf",
-    "title": "nome",
-    "pageCount": 1,
-    "fileName": "nome.pdf"
-  }
-}
-```
-
-### Exemplo de retorno de localização
-
-```json
-{
-  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
-  "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
-  "phone": "5544999999999",
-  "fromMe": false,
-  "momment": 1632228970000,
-  "status": "RECEIVED",
-  "chatName": "name",
-  "senderPhoto": "https://",
-  "senderName": "name",
-  "participantPhone": null,
-  "photo": "https://",
-  "broadcast": false,
-  "type": "ReceivedCallback",
-  "location": {
-    "longitude": -99.999999999999999,
-    "latitude": -99.9999999999999999,
-    "address": "",
-    "url": ""
-  }
-}
-```
-
-### Exemplo de retorno de sticker
-
-```json
-{
-  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
-  "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
-  "phone": "5544999999999",
-  "fromMe": false,
-  "momment": 1632228982000,
-  "status": "RECEIVED",
-  "chatName": "name",
-  "senderPhoto": "https://",
-  "senderName": "name",
-  "participantPhone": null,
-  "photo": "https://",
-  "broadcast": false,
-  "type": "ReceivedCallback",
-  "sticker": {
-    "stickerUrl": "https://",
-    "mimeType": "image/webp"
-  }
-}
-```
-
-### Exemplo de retorno de GIF
 ```json
 {
   "waitingMessage": false,
@@ -406,8 +279,122 @@ Para atualizar a rota do webhook é possível fazer isso pela API ou pelo painel
   "type": "ReceivedCallback",
   "video": {
     "videoUrl": "https://",
-    "caption": "",
-    "mimeType": "video/mp4"
+    "mimeType": "video/mp4",
+    "caption": ""
+  },
+  "instanceId": "instance.id"
+}
+```
+
+### Exemplo de retorno de contato
+
+```json
+{
+  "waitingMessage": false,
+  "isGroup": false,
+  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "phone": "5544999999999",
+  "fromMe": false,
+  "momment": 1632228925000,
+  "status": "RECEIVED",
+  "chatName": "name",
+  "senderPhoto": "https://",
+  "senderName": "name",
+  "participantPhone": null,
+  "photo": "https://",
+  "broadcast": false,
+  "type": "ReceivedCallback",
+  "contact": {
+    "displayName": "Cesar Baleco",
+    "vCard": "BEGIN:VCARD\nVERSION:3.0\nN:;nome;;;\nFN:nome\nTEL;type=CELL;type=VOICE;waid=5544999999999:+55 44 9999-9999\nEND:VCARD",
+    "phones": ["5544999999999"]
+  },
+  "instanceId": "instance.id"
+}
+```
+
+### Exemplo de retorno de documento
+
+```json
+{
+  "waitingMessage": false,
+  "isGroup": false,
+  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "phone": "5544999999999",
+  "fromMe": false,
+  "momment": 1632228955000,
+  "status": "RECEIVED",
+  "chatName": "name",
+  "senderPhoto": "https://",
+  "senderName": "name",
+  "participantPhone": null,
+  "photo": "https://",
+  "broadcast": false,
+  "type": "ReceivedCallback",
+  "document": {
+    "documentUrl": "https://",
+    "mimeType": "application/pdf",
+    "title": "nome",
+    "pageCount": 1,
+    "fileName": "nome.pdf"
+  },
+  "instanceId": "instance.id"
+}
+```
+
+### Exemplo de retorno de localização
+
+```json
+{
+  "waitingMessage": false,
+  "isGroup": false,
+  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "phone": "5544999999999",
+  "fromMe": false,
+  "momment": 1632228970000,
+  "status": "RECEIVED",
+  "chatName": "name",
+  "senderPhoto": "https://",
+  "senderName": "name",
+  "participantPhone": null,
+  "photo": "https://",
+  "broadcast": false,
+  "type": "ReceivedCallback",
+  "location": {
+    "longitude": -99.999999999999999,
+    "latitude": -99.9999999999999999,
+    "address": "",
+    "url": ""
+  },
+  "instanceId": "instance.id"
+}
+```
+
+### Exemplo de retorno de sticker
+
+```json
+{
+  "waitingMessage": false,
+  "isGroup": false,
+  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "phone": "5544999999999",
+  "fromMe": false,
+  "momment": 1632228982000,
+  "status": "RECEIVED",
+  "chatName": "name",
+  "senderPhoto": "https://",
+  "senderName": "name",
+  "participantPhone": null,
+  "photo": "https://",
+  "broadcast": false,
+  "type": "ReceivedCallback",
+  "sticker": {
+    "stickerUrl": "https://",
+    "mimeType": "image/webp"
   },
   "instanceId": "instance.id"
 }
@@ -417,6 +404,8 @@ Para atualizar a rota do webhook é possível fazer isso pela API ou pelo painel
 
 ```json
 {
+  "waitingMessage": false,
+  "isGroup": false,
   "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
   "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
   "phone": "5544999999999",
@@ -442,7 +431,8 @@ Para atualizar a rota do webhook é possível fazer isso pela API ou pelo painel
       "status": "WAITING",
       "transactionStatus": "COLLECT_SUCCESS"
     }
-  }
+  },
+  "instanceId": "instance.id"
 }
 ```
 
@@ -450,6 +440,8 @@ Para atualizar a rota do webhook é possível fazer isso pela API ou pelo painel
 
 ```json
 {
+  "waitingMessage": false,
+  "isGroup": false,
   "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
   "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
   "phone": "5544999999999",
@@ -463,7 +455,8 @@ Para atualizar a rota do webhook é possível fazer isso pela API ou pelo painel
   "broadcast": false,
   "type": "ReceivedCallback",
   "notification": "PAYMENT_ACTION_REQUEST_DECLINED",
-  "notificationParameters": ["5544999999999", "BRL", "1000"]
+  "notificationParameters": ["5544999999999", "BRL", "1000"],
+  "instanceId": "instance.id"
 }
 ```
 
@@ -471,6 +464,8 @@ Para atualizar a rota do webhook é possível fazer isso pela API ou pelo painel
 
 ```json
 {
+  "waitingMessage": false,
+  "isGroup": false,
   "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
   "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
   "phone": "5544999999999",
@@ -492,7 +487,8 @@ Para atualizar a rota do webhook é possível fazer isso pela API ou pelo painel
       "status": "COMPLETE",
       "transactionStatus": "SUCCESS"
     }
-  }
+  },
+  "instanceId": "instance.id"
 }
 ```
 
@@ -500,6 +496,8 @@ Para atualizar a rota do webhook é possível fazer isso pela API ou pelo painel
 
 ```json
 {
+  "waitingMessage": false,
+  "isGroup": false,
   "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
   "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
   "phone": "5544999999999",
@@ -524,6 +522,53 @@ Para atualizar a rota do webhook é possível fazer isso pela API ou pelo painel
     "retailerId": "",
     "firstImageId": "",
     "title": "name"
+  },
+  "instanceId": "instance.id"
+}
+```
+
+##
+
+### Exemplo de retorno de carrinho
+
+```json
+{
+  "waitingMessage": false,
+  "isGroup": false,
+  "instanceId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "messageId": "A20DA9C0183A2D35A260F53F5D2B9244",
+  "phone": "5544999999999",
+  "fromMe": false,
+  "momment": 1632233527000,
+  "status": "RECEIVED",
+  "chatName": "name",
+  "senderPhoto": null,
+  "senderName": "name",
+  "photo": "https://",
+  "broadcast": false,
+  "forwarded": false,
+  "type": "ReceivedCallback",
+  "order": {
+    "itemCount": 1,
+    "orderId": "422508169684569",
+    "message": "",
+    "orderTitle": "name",
+    "sellerJid": "5544999999999",
+    "thumbnailUrl": "https://",
+    "token": "AR5d4yUr+DmSzeCR2kUtPEeMfS+eG0O+S/T/17B+oY1mfA==",
+    "currency": "BRL",
+    "total": 2000,
+    "subTotal": 2000,
+    "products": [
+      {
+        "quantity": 1,
+        "name": "nameProduct",
+        "productId": "5338924696127051",
+        "retailerId": "1242",
+        "price": 2000,
+        "currencyCode": "BRL"
+      }
+    ]
   }
 }
 ```
